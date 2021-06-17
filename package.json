@@ -1,0 +1,29 @@
+{
+  "name": "three-js-workflow",
+  "version": "1.0.0",
+  "description": "Simple workflow starter for building three JS apps",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run clean && parcel public/index.html --out-dir development -p 3000",
+    "build": "rimraf ./dist && parcel build public/*.html --out-dir dist --public-url ./",
+    "clean": "rimraf ./development && rimraf ./.cache"
+  },
+  "keywords": [
+    "parcel"
+  ],
+  "author": "Muhammed Ajmal",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/runtime-corejs2": "^7.9.2",
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.3"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.7",
+    "gsap": "^3.6.1",
+    "three": "^0.129.0"
+  }
+}
