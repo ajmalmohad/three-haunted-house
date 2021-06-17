@@ -75,7 +75,6 @@ function init() {
  * House
  */
 	renderer.setClearColor('#262837');
-	renderer.shadowMap.enabled = true;
 	//Fog
 	const fog = new THREE.Fog('#262837',1,20);
 	scene.fog = fog;
@@ -159,6 +158,7 @@ function init() {
 		grave.position.set(x,graveGeometry.parameters.height/2 - 0.1,z)
 		grave.rotation.y = (Math.random()-0.5)*0.4
 		grave.rotation.z = (Math.random()-0.5)*0.2
+		grave.castShadow = true;
 		graves.add(grave);
 	}
 
@@ -204,9 +204,41 @@ function init() {
 	ghost2 = new THREE.PointLight('#00ffff',2,3);
 	ghost3 = new THREE.PointLight('#ffff00',2,3);
 	scene.add(ghost1,ghost2,ghost3)
-
 /**
  * Ghosts
+ */
+
+/**
+ * Shadows
+ */
+ renderer.shadowMap.enabled = true;
+ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+ moonLight.castShadow = true;
+
+ doorLight.castShadow = true;
+ doorLight.shadow.mapSize.width = 256;
+ doorLight.shadow.mapSize.height = 256;
+ doorLight.shadow.camera.far = 6;
+
+ ghost1.castShadow = true;
+ ghost1.shadow.mapSize.width = 256;
+ ghost1.shadow.mapSize.height = 256;
+ ghost1.shadow.camera.far = 7;
+
+ ghost2.castShadow = true;
+ ghost2.shadow.mapSize.width = 256;
+ ghost2.shadow.mapSize.height = 256;
+ ghost2.shadow.camera.far = 7;
+
+ ghost3.castShadow = true;
+ ghost3.shadow.mapSize.width = 256;
+ ghost3.shadow.mapSize.height = 256;
+ ghost3.shadow.camera.far = 7;
+
+ walls.castShadow = true;
+ floor.receiveShadow = true;
+/**
+ * Shadows
  */
 
 	//Positionings
